@@ -16,7 +16,10 @@ function App() {
     <div>
       <Header />
       <CreateArea onAdd={addNote} />
-      <Note key={1} title="Note title" content="Note content" />
+      {notes.map((noteItem) => {
+        return <Note title={noteItem.title} content={noteItem.content} />;
+      })}
+      {/* <Note key={1} title="Note title" content="Note content" /> //this is the static and above code is dynamic */}
       <Footer />
     </div>
   );
