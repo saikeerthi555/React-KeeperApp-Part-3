@@ -15,27 +15,27 @@ function App() {
 
   function deleteNote(id) {
     setNotes((prevNotes) => {
-      prevNotes.filter((noteItem, index) => {
+      return prevNotes.filter((noteItem, index) => {
         return index !== id;
       });
     });
-    //console.log("Delete was triggered");
   }
 
   return (
     <div>
       <Header />
       <CreateArea onAdd={addNote} />
-      {notes.map((noteItem) => {
+      {notes.map((noteItem, index) => {
         return (
           <Note
+            key={index}
+            id={index}
             title={noteItem.title}
             content={noteItem.content}
             onDelete={deleteNote}
           />
         );
       })}
-      {/* <Note key={1} title="Note title" content="Note content" /> //this is the static and above code is dynamic */}
       <Footer />
     </div>
   );
